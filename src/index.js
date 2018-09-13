@@ -23,7 +23,12 @@ function preload() {
 }
 function create() {
     this.kyara = this.physics.add.sprite(100, 100, 'kyara');
+    this.cursors = this.input.keyboard.createCursorKeys();
 }
-function update() {}
+function update() {
+    if (this.cursors.right.isDown) {
+        this.kyara.setVelocityX(100);
+    }
+}
 
 const game = new Phaser.Game(config);
