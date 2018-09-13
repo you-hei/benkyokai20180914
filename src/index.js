@@ -22,6 +22,11 @@ function preload() {
     this.load.image('kyara', 'assets/nazokyara.png')
 }
 function create() {
+    const WALL_COLOR = 0x55cc44;
+    const wall1 = this.add.graphics();
+    wall1.fillStyle(WALL_COLOR);
+    wall1.fillRect(40, 0, 40, 400);
+
     this.kyara = this.physics.add.sprite(100, 100, 'kyara');
     this.cursors = this.input.keyboard.createCursorKeys();
 }
