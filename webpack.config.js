@@ -14,6 +14,14 @@ module.exports = {
         rules: [{
             test: [/\.vert$/, /\.frag$/],
             use: 'raw-loader'
+        }, {
+            test: /\.js$/,
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    presets: [['env', { 'modules': false }]]
+                }
+            }]
         }]
     },
     plugins: [
