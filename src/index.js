@@ -18,9 +18,12 @@ const config = {
     },
 };
 
-function preload() {}
-function create() {}
-
+function preload() {
+    this.load.image('kyara', 'assets/nazokyara.png')
+}
+function create() {
+    this.kyara = this.physics.add.sprite(100, 100, 'kyara');
+}
 function update() {}
 
 const game = new Phaser.Game(config);
