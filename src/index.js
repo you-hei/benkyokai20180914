@@ -19,9 +19,9 @@ const config = {
 };
 
 function preload() {
-    this.load.image('kyara', 'assets/nazokyara.png')
+    this.load.image('kyara', 'assets/nazokyara.png');
+    this.load.image('kabe', 'assets/kabe.png');
 }
-const WALL_COLOR = 0x55cc44;
 const genRectData = (x, y, width, height) => ({ x, y, width, height });
 const wallRectArray = [
     genRectData(40, 0, 40, 400),
@@ -40,14 +40,23 @@ const wallRectArray = [
     genRectData(500, 50, 240, 100),
 ];
 function create() {
-    const walls = wallRectArray.map((data) => {
-        const wall = this.add.graphics();
-        wall.fillStyle(WALL_COLOR);
-        wall.fillRect(data.x, data.y, data.width, data.height);
-        return wall
+    this.kabe = this.physics.add.staticGroup();
+    wallRectArray.forEach((wallRect) => {
+        const widthCount = Math.floor(wallRect.width / 32);
+        const heightCount = Math.floor(wallRect.height / 32);
+        for (let i = 0; i < widthCount; i++) {
+            for (let j = 0; j < heightCount; j++) {
+                const x = wallRect.x + (i * 32);
+                const y = wallRect.y + (j * 32);
+                this.kabe.create(x, y, 'kabe').setOrigin(0, 0);
+            }
+        }
     });
 
     this.kyara = this.physics.add.sprite(0, 0, 'kyara').setOrigin(0, 0);
+
+    this.physics.add.collider(this.kyara, this.kabe);
+
     this.cursors = this.input.keyboard.createCursorKeys();
 }
 function update() {
