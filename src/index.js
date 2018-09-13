@@ -18,9 +18,12 @@ const config = {
     },
 };
 
+const game = new Phaser.Game(config);
+
 function preload() {
     this.load.image('kyara', 'assets/nazokyara.png');
     this.load.image('kabe', 'assets/kabe.png');
+    this.load.image('goal', 'assets/goal.png');
 }
 const genRectData = (x, y, width, height) => ({ x, y, width, height });
 const wallRectArray = [
@@ -53,6 +56,8 @@ function create() {
         }
     });
 
+    this.goal = this.physics.add.sprite(82, 0, 'goal').setOrigin(0, 0);
+
     this.kyara = this.physics.add.sprite(0, 0, 'kyara').setOrigin(0, 0);
 
     this.physics.add.collider(this.kyara, this.kabe);
@@ -72,5 +77,3 @@ function update() {
         this.kyara.setVelocityY(100);
     }
 }
-
-const game = new Phaser.Game(config);
