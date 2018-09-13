@@ -26,6 +26,7 @@ function create() {
     this.cursors = this.input.keyboard.createCursorKeys();
 }
 function update() {
+    this.kyara.setVelocity(0, 0);
     if (this.cursors.right.isDown) {
         this.kyara.setVelocityX(100);
     } else if (this.cursors.left.isDown) {
