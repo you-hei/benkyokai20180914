@@ -28,6 +28,13 @@ function create() {
 function update() {
     if (this.cursors.right.isDown) {
         this.kyara.setVelocityX(100);
+    } else if (this.cursors.left.isDown) {
+        this.kyara.setVelocityX(-100);
+    }
+    if (this.cursors.up.isDown) {
+        this.kyara.setVelocityY(-100);
+    } else if (this.cursors.down.isDown) {
+        this.kyara.setVelocityY(100);
     }
 }
 
