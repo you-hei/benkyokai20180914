@@ -43,7 +43,9 @@ const wallRectArray = [
     genRectData(500, 50, 240, 100),
 ];
 function onGoal () {
-    console.log('goooooooooaaaaal!!!!!!')
+    console.log('goooooooooaaaaal!!!!!!');
+    this.clearText.setVisible(true);
+    this.scene.pause();
 }
 function create() {
     this.kabe = this.physics.add.staticGroup();
@@ -68,6 +70,9 @@ function create() {
     this.physics.add.overlap(this.kyara, this.goal, onGoal, null, this);
 
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    this.clearText = this.add.text(360, 260, 'クリアー', { fontSize: '80px', fill: '#ffffff' });
+    this.clearText.setVisible(false);
 }
 function update() {
     this.kyara.setVelocity(0, 0);
