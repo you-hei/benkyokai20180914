@@ -42,6 +42,9 @@ const wallRectArray = [
     genRectData(580, 240, 40, 240),
     genRectData(500, 50, 240, 100),
 ];
+function onGoal () {
+    console.log('goooooooooaaaaal!!!!!!')
+}
 function create() {
     this.kabe = this.physics.add.staticGroup();
     wallRectArray.forEach((wallRect) => {
@@ -61,6 +64,8 @@ function create() {
     this.kyara = this.physics.add.sprite(0, 0, 'kyara').setOrigin(0, 0);
 
     this.physics.add.collider(this.kyara, this.kabe);
+
+    this.physics.add.overlap(this.kyara, this.goal, onGoal, null, this);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 }
